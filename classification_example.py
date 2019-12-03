@@ -31,9 +31,6 @@ def get_rubric_dataframe(rubric_gsheet_id):
     sh = workbook.worksheet('classification_rubric') # create a sheet object
     dataframe = get_as_dataframe(sh).fillna(0) # fill blank values with '0'
     
-    # remove the decimals and convert the int to a string
-    dataframe.year = dataframe.year.astype(int).astype(str)
-    
     return(dataframe)
 
 rubric_df = get_rubric_dataframe().astype(str) # get the rubric DF we'll use to clasify the queries
@@ -62,7 +59,7 @@ query_data['cat_len'] = query_data['categories'].apply(lambda x: len(x))
 query_data = query_data[query_data.cat_len > 0].reset_index(drop=True) 
 
 # explode the category list into invidual rows for queries with multiple categories
-query_data[['query', 'categories']].explode('categories').reset_index(drop=True)
+query_data = query_data[['query', 'categories']].explode('categories').reset_index(drop=True)
 
 # outputs the data
 query_data.to_csv('output_data.csv')
