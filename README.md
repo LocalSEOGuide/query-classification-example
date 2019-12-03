@@ -1,5 +1,5 @@
 # Query Classification Example
-This is an example script that uses a gsheet with a header row of categories, with each associated column comprised of strings associated with that 'category' with a sheet name of 'classification_rubric'.  
+This is an example script that uses a gsheet with a header row of categories, with each associated column comprised of strings associated with that 'category' with the sheet named 'classification_rubric'.  
 
 ## Example of Rubric Gsheet:
 category 1 | category 2 | category 3 | ... | category 999
